@@ -1,0 +1,27 @@
+# Rust build artifacts
+/target/
+**/*.wasm
+
+# Kiro IDE workspace files
+.kiro/
+
+# Environment secrets — never commit
+.env
+.env.*
+engine.toml
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Cargo lock (keep for binaries, omit for libraries — we keep it here since
+# the-engine is a binary crate)
+# Cargo.lock  ← intentionally tracked
+
+# Test artefacts
+*.profraw
+lcov.info

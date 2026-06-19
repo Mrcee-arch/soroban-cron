@@ -1,0 +1,27 @@
+[package]
+name = "the-engine"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Off-chain Keeper Engine daemon — ledger polling, task discovery, and execution"
+
+# Prevent accidental WASM builds of the Engine crate via a build script check.
+# The optional dep trick is inert; the real guard is in build.rs.
+
+[dependencies]
+chronos-types = { path = "../chronos-types" }
+tokio        = { version = "1", features = ["full", "signal"] }
+tracing      = { version = "0.1" }
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+axum         = { version = "0.7" }
+thiserror    = { version = "1" }
+serde        = { version = "1", features = ["derive"] }
+serde_json   = { version = "1" }
+reqwest      = { version = "0.12", features = ["json"] }
+toml         = { version = "0.8" }
+hex          = { version = "0.4" }
+stellar-strkey = { version = "0.0.8" }
+ed25519-dalek  = { version = "2", features = ["rand_core"] }
+
+# ed25519-dalek requires zeroize alignment — pin to avoid build conflicts
+zeroize = { version = "1" }

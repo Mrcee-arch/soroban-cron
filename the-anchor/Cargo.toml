@@ -1,0 +1,20 @@
+[package]
+name = "the-anchor"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Soroban smart contract — keeper registry, staking, slashing, and task provisioning"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+default = []
+testutils = ["soroban-sdk/testutils"]
+
+[dependencies]
+soroban-sdk = { version = "21.7.6", features = ["alloc"] }
+chronos-types = { path = "../chronos-types", features = ["contract"] }
+
+[dev-dependencies]
+soroban-sdk = { version = "21.7.6", features = ["testutils"] }

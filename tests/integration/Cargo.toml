@@ -1,0 +1,13 @@
+[package]
+name = "integration"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Soroban sandbox integration tests for the Chronos Keeper Network"
+
+# Integration tests in tests/ are compiled as separate binaries.
+# the-anchor must be a regular dependency (not dev-only) so it is accessible.
+[dependencies]
+the-anchor    = { path = "../../the-anchor", features = ["testutils"] }
+chronos-types = { path = "../../chronos-types", features = ["contract"] }
+soroban-sdk   = { version = "21.7.6", features = ["testutils"] }
